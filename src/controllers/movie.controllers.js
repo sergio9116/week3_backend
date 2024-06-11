@@ -5,7 +5,7 @@ const Director = require('../models/Director');
 const Genre = require('../models/Genre');
 
 const getAll = catchError(async(req, res) => {
-    const results = await Movie.findAll({include: [Actor,Director,Genre]});
+    const results = await Movie.findAll({include:[Actor,Director,Genre]});
     return res.json(results);
 });
 
@@ -16,7 +16,7 @@ const create = catchError(async(req, res) => {
 
 const getOne = catchError(async(req, res) => {
     const { id } = req.params;
-    const result = await Movie.findByPk(id, {include: [Actor,Director,Genre]});
+    const result = await Movie.findByPk(id, {include:[Actor,Director,Genre]});
     if(!result) return res.sendStatus(404);
     return res.json(result);
 });
